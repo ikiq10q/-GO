@@ -26,7 +26,7 @@ type Book struct{
 }
 
 func main(){
-	Book1 :={
+	Book1 := {
 		Title:	"Gragas_supp"
 		Author: "Kamik"
 		Pager: 99
@@ -42,9 +42,9 @@ func main(){
 
 	// func main(){
 	// 	Name = "Aibek",
-	// 	Grade 95
+	// 	Grade = 95
+	//	fmt.Println(Name)
 	// }
-	// fmt.Println(Name)
 
 
 	func main(){
