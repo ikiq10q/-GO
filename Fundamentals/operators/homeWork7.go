@@ -12,7 +12,7 @@ func main() {
 	bannerArea := bannerWidth * bannerHeight
 	fmt.Println("Size:", bannerArea)
 
-	halfBannerArea := bannerArea * bannerHeight / 2
+	halfBannerArea := bannerArea / 2
 	fmt.Println("halfBannerArea:", halfBannerArea)
 
 	bannerBorderLength := (bannerWidth + bannerHeight) * 2
