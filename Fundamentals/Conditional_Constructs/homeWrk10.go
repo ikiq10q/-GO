@@ -96,18 +96,44 @@ func main() {
 	}
 
 	//Zadanie 9
-	grade := 4
-	switch grade {
-	case 5:
+	var grade float64
+	fmt.Print("Оценка:")
+	fmt.Scan(&grade)
+	switch {
+	case grade >= 5.3:
+		fmt.Println("A++")
+	case grade > 5.0:
+		fmt.Println("A+")
+	case grade == 5:
 		fmt.Println("A")
-	case 4:
+	case grade >= 4.5:
+		fmt.Println("A-")
+
+	case grade > 4.0:
+		fmt.Println("B+")
+	case grade == 4:
 		fmt.Println("B")
-	case 3:
+	case grade >= 3.5:
+		fmt.Println("B-")
+
+	case grade > 3:
+		fmt.Println("C+")
+	case grade == 3:
 		fmt.Println("C")
-	case 2:
+	case grade >= 2.5:
+		fmt.Println("C-")
+
+	case grade > 2:
+		fmt.Println("D+")
+	case grade == 2:
 		fmt.Println("D")
-	case 1:
+	case grade >= 1.5:
+		fmt.Println("D-")
+
+	case grade == 1:
 		fmt.Println("F")
+	default:
+		fmt.Println("Некоректная оценка")
 	}
 
 }
