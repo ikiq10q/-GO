@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -50,10 +51,13 @@ func main() {
 
 	//zadanie 5
 	var day string
-	switch day {
-	case "Monday", "Tuesday", "Wednesday", "Thursday", "Friday":
+	fmt.Print("Введите день недели:")
+	fmt.Scan(&day)
+
+	switch strings.ToLower(day) {
+	case "monday", "muesday", "wednesday", "thursday", "friday":
 		fmt.Println("Будний день")
-	case "Saturday", "Sunday":
+	case "saturday", "sunday":
 		fmt.Println("Выходной день")
 	default:
 		fmt.Println("Некорректный день")
@@ -84,7 +88,8 @@ func main() {
 	var command string
 	fmt.Println("Введите команду")
 	fmt.Scan(&command)
-	switch command {
+
+	switch strings.ToLower(command) {
 	case "start":
 		fmt.Println("start")
 	case "stop":
