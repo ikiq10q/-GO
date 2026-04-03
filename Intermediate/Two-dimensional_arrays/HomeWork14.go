@@ -81,83 +81,82 @@ func main() {
 				fmt.Print("*")
 			}
 		}
-
-		fmt.Println()
-
-		//zadanie 4
-
-		matrix_2 := [4][4]int{}
-		for i, row := range matrix_2 {
-			for j, _ := range row {
-				fmt.Scan(&matrix_2[i][j])
-			}
-
-		}
-
-		fmt.Println("Введие какие две строки поменять:")
-
-		var row_1, row_2 int
-		fmt.Scan(&row_1, &row_2)
-
-		for _, row := range matrix_2 {
-			for _, matrix_2 := range row {
-				fmt.Print(matrix_2, " ")
-			}
-			fmt.Println()
-		}
-
-		fmt.Println()
-
-		for i, row := range matrix_2 {
-			for j, _ := range row {
-				if i == row_1-1 {
-					matrix_2[row_1-1][j], matrix_2[row_2-1][j] = matrix_2[row_2-1][j], matrix_2[row_1-1][j]
-				}
-			}
-
-		}
-		for _, row := range matrix_2 {
-			for _, matrix_2 := range row {
-				fmt.Print(matrix_2, " ")
-			}
-			fmt.Println()
-		}
-
-		//zadanie 5
-
-		matrix_3 := [4][4]int{}
-		for i, row := range matrix_3 {
-			for j, _ := range row {
-				fmt.Scan(&matrix_3[i][j])
-			}
-
-		}
-
-		fmt.Println("Введие какие два слобца поменять:")
-
-		var col_1, col_2 int
-
-		fmt.Scan(&col_1, &col_2)
-
-		for _, row := range matrix_3 {
-			for _, matrix_3 := range row {
-				fmt.Print(matrix_3, " ")
-			}
-			fmt.Println()
-		}
-
-		fmt.Println()
-
-		for i := range matrix_3 {
-			matrix_3[i][col_1-1], matrix_3[i][col_2-1] = matrix_3[i][col_2-1], matrix_3[i][col_1-1]
-		}
-
-		for _, row := range matrix_3 {
-			for _, matrix_3 := range row {
-				fmt.Print(matrix_3, " ")
-			}
-			fmt.Println()
-		}
 	}
 
+	fmt.Println()
+
+	//zadanie 4
+
+	matrix_2 := [4][4]int{}
+	for i, row := range matrix_2 {
+		for j, _ := range row {
+			fmt.Scan(&matrix_2[i][j])
+		}
+
+	}
+
+	fmt.Println("Введие какие две строки поменять:")
+
+	var row_1, row_2 int
+	fmt.Scan(&row_1, &row_2)
+
+	for _, row := range matrix_2 {
+		for _, matrix_2 := range row {
+			fmt.Print(matrix_2, " ")
+		}
+		fmt.Println()
+	}
+
+	fmt.Println()
+
+	for i, row := range matrix_2 {
+		for j, _ := range row {
+			if i == row_1-1 {
+				matrix_2[row_1-1][j], matrix_2[row_2-1][j] = matrix_2[row_2-1][j], matrix_2[row_1-1][j]
+			}
+		}
+
+	}
+	for _, row := range matrix_2 {
+		for _, matrix_2 := range row {
+			fmt.Print(matrix_2, " ")
+		}
+		fmt.Println()
+	}
+
+	//zadanie 5
+
+	matrix_3 := [4][4]int{}
+	for i, row := range matrix_3 {
+		for j, _ := range row {
+			fmt.Scan(&matrix_3[i][j])
+		}
+
+	}
+
+	fmt.Println("Введие какие два слобца поменять:")
+
+	var col_1, col_2 int
+
+	fmt.Scan(&col_1, &col_2)
+
+	for _, row := range matrix_3 {
+		for _, matrix_3 := range row {
+			fmt.Print(matrix_3, " ")
+		}
+		fmt.Println()
+	}
+
+	fmt.Println()
+
+	for i := range matrix_3 {
+		matrix_3[i][col_1-1], matrix_3[i][col_2-1] = matrix_3[i][col_2-1], matrix_3[i][col_1-1]
+	}
+
+	for _, row := range matrix_3 {
+		for _, matrix_3 := range row {
+			fmt.Print(matrix_3, " ")
+		}
+		fmt.Println()
+	}
 }
