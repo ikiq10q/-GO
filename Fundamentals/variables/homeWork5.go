@@ -33,6 +33,6 @@ func main() {
 	// переменные тима const нельзя изменить, так как значение не изменяемо
 	const breakTime = 15
 	fmt.Println("BreakTime", breakTime)
-	breakTime = 20
-	fmt.Println("BreakTime", breakTime)
+	// breakTime = 20
+	// fmt.Println("BreakTime", breakTime)
 }

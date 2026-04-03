@@ -33,12 +33,19 @@ func main() {
 	//zadanie 4
 	numberList := [5]int{1, 2, 3, 4, 5}
 
+	fl := false
+
 	for _, element := range numberList {
 		if element == 3 {
-			fmt.Println("Число 3 есть в массиве")
-		} else {
-			fmt.Println("Число 3 отсутствует в массиве")
+			fl = true
 		}
+	}
+
+	if fl == true {
+		fmt.Println("Цифра 3 есть в массиве")
+	} else {
+		fmt.Println("Цифры 3 нет в массиве")
+
 	}
 
 	//zadanie 5
