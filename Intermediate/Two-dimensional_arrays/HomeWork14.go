@@ -96,10 +96,8 @@ func main() {
 
 		fmt.Println("Введие какие две строки поменять:")
 
-		var row_1 int
-		var row_2 int
-		fmt.Scan(&row_1)
-		fmt.Scan(&row_2)
+		var row_1, row_2 int
+		fmt.Scan(&row_1, &row_2)
 
 		for _, row := range matrix_2 {
 			for _, matrix_2 := range row {
@@ -107,6 +105,8 @@ func main() {
 			}
 			fmt.Println()
 		}
+
+		fmt.Println()
 
 		for i, row := range matrix_2 {
 			for j, _ := range row {
@@ -146,6 +146,8 @@ func main() {
 			fmt.Println()
 		}
 
+		fmt.Println()
+
 		for i := range matrix_3 {
 			matrix_3[i][col_1-1], matrix_3[i][col_2-1] = matrix_3[i][col_2-1], matrix_3[i][col_1-1]
 		}
@@ -157,4 +159,5 @@ func main() {
 			fmt.Println()
 		}
 	}
+
 }
