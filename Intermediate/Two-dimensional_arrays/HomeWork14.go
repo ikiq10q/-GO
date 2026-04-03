@@ -84,7 +84,7 @@ func main() {
 		fmt.Println()
 	}
 
-	zadanie 4
+	// zadanie 4
 
 	matrix_2 := [4][4]int{}
 	for i, row := range matrix_2 {
