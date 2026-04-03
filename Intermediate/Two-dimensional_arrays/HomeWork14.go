@@ -32,7 +32,7 @@ func main() {
 
 	fmt.Printf("максимально число: %d at (%d,%d)\n", max, max_i, max_j)
 
-	//zadanie 2
+	zadanie 2
 
 	// заполняем матрицу
 	star := [11][11]string{}
@@ -81,11 +81,10 @@ func main() {
 				fmt.Print("*")
 			}
 		}
+		fmt.Println()
 	}
 
-	fmt.Println()
-
-	//zadanie 4
+	zadanie 4
 
 	matrix_2 := [4][4]int{}
 	for i, row := range matrix_2 {
