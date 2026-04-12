@@ -33,8 +33,8 @@ func main() {
 	PI := 3.14
 	fmt.Println("PI:", PI)
 
-	PI = "3.1415"
-	fmt.Println("PI:", PI)
+	// PI = "3.1415"
+	// fmt.Println("PI:", PI)
 	// не получится присвоить "PI" строку так как она уже имееет значение float64,
 	// так же если было бы const
 }

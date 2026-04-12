@@ -3,103 +3,133 @@ package main
 import (
 	"fmt"
 	"slices"
+	"strings"
 )
 
 func main() {
 
-	// //zadadnie 1
+	//zadadnie 1
+	var numbers []int
+	num := 0
 
-	// var numbers []int
-	// num := 0
+	for {
+		fmt.Print("Введите число: ")
+		_, err := fmt.Scan(&num)
+		if err != nil {
+			fmt.Println("Ошибка: нужно вводить число")
+			continue
+		}
+		if num == 0 {
+			break
+		}
+		numbers = append(numbers, num)
+	}
+	fmt.Println(numbers)
+	summ := 0
+	for _, num := range numbers {
+		summ += num
+	}
+	fmt.Println(summ)
 
-	// for {
-	// 	fmt.Print("Введите число: ")
-	// 	fmt.Scan(&num)
+	//zadanie 2
+	var values []int
+	num_1 := 0
 
-	// 	if num == 0 {
-	// 		break
-	// 	}
-	// 	numbers = append(numbers, num)
-	// }
-	// fmt.Println(numbers)
-	// summ := 0
-	// for _, num := range numbers {
-	// 	summ += num
-	// }
-	// fmt.Println(summ)
+	//при вводе др символов кроме чисел выдает ошшибку пропускаем и возвращаемся обратно
+	for {
+		fmt.Print("Введите число: ")
+		_, err := fmt.Scan(&num_1)
+		if err != nil { // оишбка ввода
+			fmt.Println("Ошибка: нужно вводить число")
+			continue
+		}
+		if num_1 == 0 {
+			break
+		}
+		values = append(values, num_1)
+	}
+	fmt.Println("первый срез", values)
 
-	// //zadanie 2
-	// var values []int
-	// num_1 := 0
+	var values_1 []int
 
-	// for {
-	// 	fmt.Print("Введите число: ")
-	// 	fmt.Scan(&num_1)
+	for _, v := range values {
+		if v%2 == 0 {
+			values_1 = append(values_1, v)
+		}
+	}
 
-	// 	if num_1 == 0 {
-	// 		break
-	// 	}
-	// 	values = append(values, num_1)
-	// }
-	// fmt.Println("первый срез", values)
+	fmt.Println("Чётные числа из первого среза:", values_1)
 
-	// var values_1 []int
+	//zadanie 3
+	data := []int{}
+	data_intput := 0
 
-	// for _, v := range values {
-	// 	if v%2 == 0 {
-	// 		values_1 = append(values_1, v)
-	// 	}
-	// }
+	for {
+		fmt.Print("Введите число: ")
+		_, err := fmt.Scan(&data_intput)
+		if err != nil {
+			fmt.Println("Ошибка: нужно вводить число")
+			continue
+		}
+		if data_intput == 0 {
+			break
+		}
+		data = append(data, data_intput)
 
-	// fmt.Println("Чётные числа из первого среза:", values_1)
+	}
+	n := 2
 
-	// //zadanie 3
-	// data := []int{}
-	// data_intput := 0
-	// n := 1
+	if n >= 0 && n < len(data) {
+		data = append(data[:n], data[n+1:]...)
+	}
 
-	// for {
-	// 	fmt.Print("Введите число: ")
-	// 	fmt.Scan(&temp_input)
-	// 	if temp_input == 0 {
-	// 		break
-	// 	}
+	fmt.Println(data)
 
-	// data = append(data[:n], data[n+1:]...)
-	// }
-	// fmt.Println(data)
+	//zadanie 4
+	temp := []int{}
+	temp_input := 0
+	for {
+		fmt.Print("Введите температуру: ")
+		_, err := fmt.Scan(&temp_input)
+		if err != nil {
+			fmt.Println("Ошибка: нужно вводить число")
+			continue
+		}
+		if temp_input == 0 {
+			break
+		}
+		temp = append(temp, temp_input)
+	}
+	minTemp := slices.Min(temp)
+	fmt.Println("Минимальная температура:", minTemp, "°C")
 
-	// //zadanie 4
-	// temp := []int{}
-	// temp_input := 0
-	// for {
-	// 	fmt.Print("Введите температуру: ")
-	// 	fmt.Scan(&temp_input)
-	// 	if temp_input == 0 {
-	// 		break
-	// 	}
+	maxTemp := slices.Max(temp)
+	fmt.Println("Максимальная температура:", maxTemp, "°C")
 
-	// minTemp := slices.Min(temp)
-	// fmt.Println("Минимальная температура:", minTemp, "°C")
+	//zadanie 5
+	words := []string{}
+	words_input := ""
+	words_2 := []string{}
 
-	// maxTemp := slices.Max(temp)
-	// fmt.Println("Максимальная температура:", maxTemp, "°C")
+	for {
+		fmt.Print("Введите строки: ")
+		_, err := fmt.Scan(&words_input)
+		if err != nil {
+			fmt.Println("Ошибка: нужно вводить строки")
+			continue
+		}
+		if strings.ToLower(words_input) == "stop" {
+			break
+		}
+		words = append(words, words_input)
+	}
+	// slices.Reverse(words)
 
-	// //zadanie 5
-	// words := []string{}
-	// words_input := ""
-
-	// for {
-	// 	fmt.Print("Введите строки: ")
-	// 	fmt.Scan(&words_input)
-	// 	if words_input == "Stop" {
-	// 		break
-	// 	}
-	// 	words = append(words, words_input)
-	//	fmt.Println(words)
-	// }
-	//slices.Reverse(words)
-	// fmt.Println(words)
+	//разворачиваю срез и идем с конца в начало
+	for i := len(words) - 1; i >= 0; i-- {
+		words_2 = append(words_2, words[i]) // добавляю по элементу
+	}
+	fmt.Println(words_2)
 
 	//zadanie 6
 	nums := []int{}
@@ -107,8 +137,11 @@ func main() {
 
 	for {
 		fmt.Print("Введите число: ")
-		fmt.Scan(&nums_input)
-
+		_, err := fmt.Scan(&nums_input)
+		if err != nil {
+			fmt.Println("Ошибка: нужно вводить число")
+			continue
+		}
 		if nums_input == 0 {
 			break
 		}
@@ -139,7 +172,6 @@ func main() {
 	fmt.Println(registrationList)
 
 	//zadanie 8
-
 	toyList := [3]string{"Car", "Doll", "Ball"}
 
 	testToyList := toyList
