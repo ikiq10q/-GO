@@ -5,7 +5,7 @@ import (
 	// "sort"
 )
 
-func main() {
+func main1() {
 	// initialUsers := [8]string{"Bob", "Alice", "Kate", "Sam", "Tom", "Paul", "Mike", "Robert"}
 
 	// users1 := initialUsers[2:6] // с 3-го по 6-й
