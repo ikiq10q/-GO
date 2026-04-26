@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
-	"reflect"
+	. "reflect"
 	"strings"
 )
 
@@ -165,7 +165,7 @@ func main() {
 		for j := 0; j < len(sales[i]); j++ {
 			sum += sales[i][j]
 		}
-		total[i] = sum
+		total[i+1] = sum
 	}
 	fmt.Println(total)
 
@@ -207,7 +207,7 @@ func main() {
 		"port": "8080",
 		"mode": "production",
 	}
-	if reflect.DeepEqual(defaultConfig, currentConfig) {
+	if DeepEqual(defaultConfig, currentConfig) {
 		fmt.Println("Конфигурации совпадают")
 	} else {
 		fmt.Println("Конфигурации отличаются")
@@ -215,7 +215,7 @@ func main() {
 
 	currentConfig["mode"] = "debug"
 
-	if reflect.DeepEqual(defaultConfig, currentConfig) {
+	if DeepEqual(defaultConfig, currentConfig) {
 		fmt.Println("Конфигурации совпадают")
 	} else {
 		fmt.Println("Конфигурации отличаются")
