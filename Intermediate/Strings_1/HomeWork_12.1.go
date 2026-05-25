@@ -22,6 +22,8 @@ func main() {
 	} else {
 		fmt.Println("Строка не пуста")
 	}
+	messageLong := len(message)
+	fmt.Println("Длина сообщения:", messageLong)
 
 	//zadanie 3
 	fmt.Print("Введите строку: ")
@@ -107,7 +109,7 @@ func main() {
 	vowels := "aeiouyAEIOUY" // считаем гласные
 	vowelCount := 0
 
-	for _, v := range text {
+	for _, v := range text2 {
 		if strings.ContainsRune(vowels, v) {
 			vowelCount++
 		}
