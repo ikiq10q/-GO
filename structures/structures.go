@@ -13,7 +13,7 @@ func increment_age(user User) {
 	user.age++
 }
 
-func main() {
+func main_1() {
 
 	user1 := User{
 		login:         "user1",
