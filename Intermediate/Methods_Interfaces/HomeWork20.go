@@ -31,11 +31,16 @@ type Student struct {
 }
 
 func (s Student) Average() float64 {
-	score := 0
-	for _, grade := range s.Grades {
-		score += grade
+	if len(s.Grades) == 0 {
+		return 0
 	}
-	return float64(score)
+
+	score := 0.0
+	for _, grade := range s.Grades {
+		score += float64(grade)
+	}
+
+	return score / float64(len(s.Grades))
 }
 
 type Person interface {
