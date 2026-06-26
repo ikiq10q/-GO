@@ -56,11 +56,11 @@ func checkPassword(s string) {
 func checkEmail(email string) {
 	parts := strings.Split(email, "@")
 	if len(parts) != 2 {
-		fmt.Println("Email должен содержать @")
+		fmt.Println("Ошибка: Email должен содержать один @")
 		return
 	}
 	if !strings.Contains(parts[1], ".") {
-		fmt.Println("Email должен содержать точку после @")
+		fmt.Println("Ошибка:Email должен содержать точку после @")
 		return
 	}
 	fmt.Println("Email корректен")
