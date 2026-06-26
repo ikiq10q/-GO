@@ -60,7 +60,7 @@ func calculateCircleArea(r int) (float64, error) {
 func findUser(names []string, search string) (int, error) {
 	for i, n := range names {
 		if n == search {
-			return i + 1, nil
+			return i, nil
 		}
 	}
 	return -1, errors.New("пользователь не найден")
@@ -134,6 +134,6 @@ func main() {
 	if index, err7 := findUser(Subscribers, "Ardak"); err7 != nil {
 		fmt.Println("Ошибка", err7)
 	} else {
-		fmt.Println("Индекс саба:", index)
+		fmt.Println("Индекс саба:", index+1)
 	}
 }
