@@ -60,10 +60,10 @@ func main() {
 	// defer printData()
 	// fmt.Println("КОнец программы")
 
-	// //zadanie 2
-	// defer printData()
-	// fmt.Println("Первый")
-	// defer printData()
+	//zadanie 2
+	defer fmt.Println("Первый")
+	defer fmt.Println("Второй")
+	defer fmt.Println("Третий")
 
 	// fmt.Println("Второй")
 	// defer printData()
@@ -84,14 +84,14 @@ func main() {
 	// panic("чек код!")
 	// fmt.Println("КОнец программы") // не выполнится
 
-	//zadanie 6
-	safeDivide(52, 2)
-	safeDivide(52, 0)
+	// 	//zadanie 6
+	// 	safeDivide(52, 2)
+	// 	safeDivide(52, 0)
 
-	//zadanie 7
-	num7 := []int{1, 2, 3, 45, 7, 6}
+	// 	//zadanie 7
+	// 	num7 := []int{1, 2, 3, 45, 7, 6}
 
-	fmt.Println(getElement(num7, 5))
-	fmt.Println(getElement(num7, 25))
+	// 	fmt.Println(getElement(num7, 5))
+	// 	fmt.Println(getElement(num7, 25))
 
 }
