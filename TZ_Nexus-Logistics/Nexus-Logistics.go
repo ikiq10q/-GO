@@ -150,11 +150,6 @@ func DeliveryTask(robot *Robot, product *Product, distance float64, reportCh cha
 		return
 	}
 
-	if !robot.IsAvailable {
-		fmt.Println(DeliveryReport(*robot, product, "ошибка: робот недоступен"))
-		return
-	}
-
 	//проверка на критический заряд батареии
 	if robot.Battery < EmergencyThreshold {
 		reportCh <- DeliveryReport(*robot, product, fmt.Sprintf("критический заряд: %.1f", robot.Battery))
@@ -221,35 +216,43 @@ func main() {
 
 		switch menu {
 		case 1: //чекин буфера
-			if orderCount >= BufferCapacity {
-				fmt.Println("Буфер заказов полон. Выполните доставку.")
-				continue
+			for {
+				if orderCount >= BufferCapacity {
+					fmt.Println("Буфер заказов полон. Выполните доставку.")
+					continue
+				}
+
+				fmt.Print("Введите товар:")
+				var name string
+				fmt.Scan(&name)
+
+				if name == "стоп" || name == "0" {
+					fmt.Println("Возврат в главное меню.")
+					break // Выходим из внутреннего цикла
+				}
+
+				name = strings.ToLower(name)
+
+				// чекин склада
+				qty, ok := tovar[name]
+				if !ok || qty == 0 {
+					fmt.Printf("Товар %s отсутствует на складе\n", name)
+					continue
+				}
+
+				tovar[name]-- //умен. колл товара на складе
+
+				//генерирует продукт и записывает в буфр
+				orderBuffer[orderCount] = Product{
+					ID:   productID,
+					Name: name,
+				}
+
+				productID++
+				orderCount++
+
+				fmt.Printf("Товар %s добавлен в заказ. В буфере: %d/%d\n", name, orderCount, BufferCapacity)
 			}
-			fmt.Print("Введите товар:")
-			var name string
-			fmt.Scan(&name)
-			name = strings.ToLower(name)
-
-			// чекин склада
-			qty, ok := tovar[name]
-			if !ok || qty == 0 {
-				fmt.Printf("Товар %s отсутствует на складе\n", name)
-				continue
-			}
-
-			tovar[name]-- //умен. колл товара на складе
-
-			//генерирует продукт и записывает в буфр
-			orderBuffer[orderCount] = Product{
-				ID:   productID,
-				Name: name,
-			}
-
-			productID++
-			orderCount++
-
-			fmt.Printf("Товар %s добавлен в заказ. В буфере: %d/%d\n", name, orderCount, BufferCapacity)
-
 		case 2:
 			fmt.Println("Склад")
 			for name, qty := range tovar {
