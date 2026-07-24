@@ -42,7 +42,7 @@ type Robot struct {
 
 // 2.1. Интерфейс Mover
 type Mover interface {
-	Move(distance float64) error
+	Move(product *Product, distance float64) error
 }
 
 // метод moVe
@@ -113,7 +113,7 @@ func (r *Robot) CanCarryMrRobot(product *Product) error {
 			r.Model,
 			product.Name,
 			product.Weight,
-			product.Weight,
+			maxWeight,
 		)
 	}
 	return nil
