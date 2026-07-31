@@ -50,7 +50,8 @@ func parseProduct(data []byte) (*Product, error) {
 		fmt.Println(err)
 		return nil, err
 	}
-	return
+	return &Product{}, nil
+
 }
 
 func main() {
@@ -65,11 +66,11 @@ func main() {
 	}
 
 	//zadanie 2
-	jsonData := []byte{
+	jsonData := []byte(`{
 
 		"name":  "varmilo",
 		"price": 250,
-	}
+	}`)
 
 	product, err := parseProduct(jsonData)
 
