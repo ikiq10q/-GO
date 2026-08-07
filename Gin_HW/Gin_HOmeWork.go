@@ -82,6 +82,88 @@ func deleteUserHandler(c *gin.Context) {
 	fmt.Fprintf(c.Writer, "Пользователь %s успешно удален", username)
 }
 
+// zadanie 3
+var products map[string]Product
+
+type Product struct {
+	Title    string `json:"title"`
+	PriceKZT int    `json:"price_KZT"`
+}
+
+func productHandler(c *gin.Context) {
+	sku := c.Param("sku")
+
+	p, ok := products[sku]
+	if !ok {
+		c.Status(http.StatusNotFound)
+		fmt.Fprintf(c.Writer, "Товар с артикулом %s отсутствует", sku)
+		return
+	}
+	priceUSD := p.PriceKZT / 450
+
+	c.Status(http.StatusOK)
+	fmt.Fprintf(c.Writer, "Товар: %s, Цена: %d KZT (примерно %d USD)", p.Title, p.PriceKZT, priceUSD)
+}
+
+// zadanie 4
+var orders map[string]Order
+
+type Order struct {
+	ID     string `json:"id"`
+	Status string `json:"status"`
+}
+
+func OrderStatusDelivered(c *gin.Context) {
+	id := c.Param("id")
+	newStatus := c.Param("new_status")
+
+	//проверка на наличии заказа
+	order, ok := orders[id]
+	if !ok {
+		c.Status(http.StatusNotFound)
+		fmt.Fprintf(c.Writer, "Заказ %s не найден", id)
+		return
+	}
+	//статсус заказа
+	validStatuses := map[string]bool{
+		"pending":   true,
+		"shipped":   true,
+		"delivered": true,
+	}
+	// проверка на валидацию
+	if !validStatuses[newStatus] {
+		c.Status(http.StatusBadRequest)
+		fmt.Fprintf(c.Writer, "Статус %s недопустим", newStatus)
+		return
+	}
+
+	order.Status = newStatus
+	orders[id] = order // сохраняем обратно
+
+	c.Status(http.StatusOK)
+	fmt.Fprintf(c.Writer, "Статус заказа %s успешно изменен на %s", id, newStatus)
+
+}
+
+// zadanie 4.1
+type WeatherReport struct {
+	City        string  `json:"city"`
+	Temperature float64 `json:"temperature"`
+}
+
+func weatherHandler(c *gin.Context) {
+	var report WeatherReport
+
+	err := c.ShouldBindJSON(&report)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.Status(http.StatusOK)
+	fmt.Fprintf(c.Writer, "Город: %s, Температура: %.1f°C", report.City, report.Temperature)
+}
+
 // zadanie 5
 type ServerStatus struct {
 	Status        string `json:"status"`
@@ -118,12 +200,33 @@ func main() {
 		"admin":     {Username: "Ardak", Role: "Admin"},
 		"creepchek": {Username: "Kamik", Role: "User"},
 	}
+
+	//zadanie 3
+	products = map[string]Product{
+		"sku001": {Title: "Хлеб", PriceKZT: 123},
+		"sku002": {Title: "Cy", PriceKZT: 321},
+		"sku003": {Title: "Груши", PriceKZT: 322},
+	}
+
+	//zadanie 4
+	orders = map[string]Order{
+		"001": {ID: "001", Status: "pending"},
+		"002": {ID: "002", Status: "delivered"},
+	}
+
 	r := gin.Default()
 	r.GET("/books/:id", bookHandler)
 	r.GET("/books/:id", updateBookHandler)
 
 	//zadanie 2
 	r.DELETE("/users/:username", deleteUserHandler)
+
+	//zadanie 3
+	r.GET("/products/:sku", productHandler)
+
+	r.POST("/orders/:id/status/:new_status", OrderStatusDelivered) //zadanie 4
+
+	r.POST("/weather", weatherHandler) //zadanie 4.1
 
 	r.GET("/status", statusHandler) //zadanie 5
 
