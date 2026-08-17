@@ -121,30 +121,30 @@ func OrderStatusCooked(c *gin.Context) {
 
 func main() {
 	orders = map[string]*Order{
-		"ORD-1": &Order{
+		"ORD-1": {
 			ID:           "опв-1",
 			CustomerName: "Матвей",
 			Status:       "created",
-			Items: []OrderItem{OrderItem{
+			Items: []OrderItem{{
 				Title:    "Кукси",
 				Price:    1690,
 				Quantity: 2,
-			}, OrderItem{
+			}, {
 				Title:    "Лагман",
 				Price:    1690,
 				Quantity: 1,
 			}},
 			TotalPrice: 1690*2 + 1690*1,
 		},
-		"ORD-2": &Order{
+		"ORD-2": {
 			ID:           "опв-2",
 			CustomerName: "Айбат",
 			Status:       "created",
-			Items: []OrderItem{OrderItem{
+			Items: []OrderItem{{
 				Title:    "Ташкенский",
 				Price:    890,
 				Quantity: 1,
-			}, OrderItem{
+			}, {
 				Title:    "Хинкали",
 				Price:    490,
 				Quantity: 5,
